@@ -9,7 +9,7 @@ type EditFeedbackButtonProps = {
 function EditFeedbackButton({ feedbackId }: EditFeedbackButtonProps) {
   return (
     <Link
-      href={`/suggestions/${feedbackId}/update`}
+      href={`/feedbacks/${feedbackId}/update`}
       className="bg-blue text-small text-very-light-blue-gray rounded-xl px-4 py-2.5 font-bold"
     >
       Edit Feedback

@@ -18,7 +18,10 @@ async function page({ params }: { params: Params }) {
   return (
     <div className="mx-auto space-y-6 p-6 pb-22 md:w-full md:max-w-172.5 lg:max-w-182.5">
       <div className="flex items-center justify-between">
-        <Link href={"/suggestions"} className="flex items-center gap-2">
+        <Link
+          href={"/feedbacks/suggestions"}
+          className="flex items-center gap-2"
+        >
           <MdKeyboardArrowLeft size={20} className="fill-blue" />
           <p className="text-blue-gray text-sm font-bold">Go Back</p>
         </Link>
@@ -32,7 +35,6 @@ async function page({ params }: { params: Params }) {
         numOfComments={feedback.numOfComments}
       />
       <AddCommentForm feedbackId={feedbackId} />
-      <p>just for test</p>
     </div>
   );
 }

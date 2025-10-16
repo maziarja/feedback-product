@@ -29,7 +29,7 @@ function DeleteModal({
     }
     if (feedbackId && !commentId && !replyId) {
       const result = await deleteProductRequest(feedbackId);
-      if (result?.success) router.push("/suggestions");
+      if (result?.success) router.push("/feedbacks/suggestions");
     }
   }
 

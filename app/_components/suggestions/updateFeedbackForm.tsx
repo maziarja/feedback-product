@@ -56,7 +56,7 @@ function UpdateFeedbackForm({ feedback }: UpdateFeedbackFormProps) {
       feedbackId,
     );
     if (result?.success) {
-      router.push(`/suggestions/${feedbackId}`);
+      router.push(`/feedbacks/${feedbackId}`);
     }
     if (!result?.success) {
       setError("root", { type: "server", message: result?.message });
@@ -249,7 +249,7 @@ function UpdateFeedbackForm({ feedback }: UpdateFeedbackFormProps) {
             )}
           </button>
           <Link
-            href={`/suggestions/${feedbackId}`}
+            href={`/feedbacks/${feedbackId}`}
             className="bg-dark-blue hover:bg-dark-blue/80 cursor-pointer rounded-lg px-4 py-2.5 text-center text-sm font-bold text-[#F2F4FE] md:order-2 md:ml-auto"
           >
             Cancel

@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 
 async function page() {
   const session = await auth();
-  if (session) redirect("/suggestions");
+  if (session) redirect("/feedbacks/suggestions");
 }
 
 export default page;

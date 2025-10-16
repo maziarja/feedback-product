@@ -38,7 +38,7 @@ function AddFeedbackForm() {
     const result = await createProductRequest(data, category);
     if (result?.success) {
       reset();
-      router.push("/suggestions");
+      router.push("/feedbacks/suggestions");
     }
   }
 
@@ -165,7 +165,7 @@ function AddFeedbackForm() {
           )}
         </button>
         <Link
-          href={"/suggestions"}
+          href={"/feedbacks/suggestions"}
           className="bg-dark-blue hover:bg-dark-blue/80 cursor-pointer rounded-lg px-4 py-2.5 text-center text-sm font-bold text-[#F2F4FE] md:ml-auto"
         >
           Cancel

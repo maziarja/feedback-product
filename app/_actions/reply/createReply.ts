@@ -34,7 +34,7 @@ export async function createReply(
       await productRequest.save();
     }
 
-    revalidatePath(`/suggestions/${productRequestId}`);
+    revalidatePath(`/feedbacks/${productRequestId}`);
   } catch (error) {
     console.error(error);
   }

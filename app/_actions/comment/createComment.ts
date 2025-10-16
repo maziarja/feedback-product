@@ -31,7 +31,7 @@ export async function createComment(content: string, productRequestId: string) {
     // await ProductRequest.findByIdAndUpdate(productRequestId, {
     //   $inc: { numOfComments: 1 },
     // });
-    revalidatePath(`/suggestions/${productRequestId}`);
+    revalidatePath(`/feedbacks/${productRequestId}`);
   } catch (error) {
     console.error(error);
   }

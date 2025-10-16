@@ -17,7 +17,7 @@ async function page({ params }: { params: Params }) {
     <div className="flex flex-col items-center space-y-6 px-6 pt-9.5 pb-22">
       <div className="w-full max-w-135">
         <Link
-          href={`/suggestions/${feedbackId}`}
+          href={`/feedbacks/${feedbackId}`}
           className="mb-13 flex items-center gap-2"
         >
           <MdKeyboardArrowLeft size={20} className="fill-blue" />

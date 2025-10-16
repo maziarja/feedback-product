@@ -12,7 +12,7 @@ async function FeedbackContainer({ feedback }: FeedbackContainerProps) {
     feedback;
   return (
     <Link
-      href={`/suggestions/${feedback._id}`}
+      href={`/feedbacks/${feedback._id}`}
       className="block cursor-pointer space-y-4 rounded-lg bg-white p-6 md:grid md:grid-cols-[1fr_10fr_1fr] md:gap-10"
     >
       <div className="hidden md:block">

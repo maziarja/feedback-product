@@ -22,7 +22,7 @@ function CategoryTags({ filterBy = "all" }: CategoryTagsProps) {
       <div className="flex flex-wrap gap-x-2 gap-y-4">
         {categoryList.map((category) => (
           <Link
-            href={`/suggestions/?filterBy=${category}`}
+            href={`/feedbacks/suggestions/?filterBy=${category}`}
             key={category}
             className={` ${filterBy === category ? "bg-blue text-white" : "text-blue bg-light-blue-gray"} cursor-pointer rounded-xl px-4 py-1 text-sm font-semibold`}
           >

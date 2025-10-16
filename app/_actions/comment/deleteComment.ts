@@ -30,7 +30,7 @@ export async function deleteComment(
       productRequest.numOfComments -= 1;
       await productRequest.save();
 
-      revalidatePath(`/suggestions/${productRequestId}`);
+      revalidatePath(`/feedbacks/${productRequestId}`);
       return { success: true };
     }
   } catch (error) {

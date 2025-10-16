@@ -57,7 +57,7 @@ export async function updateProductRequest(
 
     await productRequest?.save();
 
-    revalidatePath(`/suggestions/${feedbackId}`);
+    revalidatePath(`/feedbacks/${feedbackId}`);
     return { success: true };
   } catch (error) {
     console.error(error);

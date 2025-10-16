@@ -37,7 +37,7 @@ export async function createProductRequest(
     });
 
     await newProductRequest.save();
-    revalidatePath("/suggestions");
+    revalidatePath("/feedbacks/suggestions");
     return { success: true };
   } catch (error) {
     console.error(error);
