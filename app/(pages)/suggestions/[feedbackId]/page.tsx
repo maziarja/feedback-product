@@ -32,6 +32,7 @@ async function page({ params }: { params: Params }) {
         numOfComments={feedback.numOfComments}
       />
       <AddCommentForm feedbackId={feedbackId} />
+      <p>just for test</p>
     </div>
   );
 }
