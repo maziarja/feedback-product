@@ -4,6 +4,7 @@ import { deleteComment } from "@/app/_actions/comment/deleteComment";
 import { deleteProductRequest } from "@/app/_actions/productRequest/deleteProductRequest";
 import { deleteReply } from "@/app/_actions/reply/deleteReply";
 import { useParams, useRouter } from "next/navigation";
+import { useState } from "react";
 import { MdClose } from "react-icons/md";
 
 function DeleteModal({
@@ -17,18 +18,25 @@ function DeleteModal({
 }) {
   const params = useParams();
   const router = useRouter();
+  const [isPending, setIsPending] = useState(false);
   const { feedbackId } = params;
   async function handleDeleteComment() {
     if (commentId) {
+      setIsPending(true);
       const result = await deleteComment(commentId, feedbackId);
+      setIsPending(false);
       if (result?.success) closeModal();
     }
     if (replyId) {
+      setIsPending(true);
       const result = await deleteReply(replyId, feedbackId);
+      setIsPending(false);
       if (result?.success) closeModal();
     }
     if (feedbackId && !commentId && !replyId) {
+      setIsPending(true);
       const result = await deleteProductRequest(feedbackId);
+      setIsPending(false);
       if (result?.success) router.push("/feedbacks/suggestions");
     }
   }
@@ -52,7 +60,7 @@ function DeleteModal({
           action cannot be undone.
         </p>
 
-        <div className="flex items-center justify-between px-4">
+        <div className="flex justify-between px-4">
           <button
             onClick={closeModal}
             className="text-dark-blue ring-blue-gray/40 cursor-pointer rounded-lg px-4 py-2 text-sm font-semibold ring-1"
@@ -60,10 +68,11 @@ function DeleteModal({
             Cancel
           </button>
           <button
+            disabled={isPending}
             onClick={handleDeleteComment}
             className="cursor-pointer rounded-lg border-1 bg-red-400 px-4 py-2 text-sm font-semibold text-white hover:bg-red-400/80"
           >
-            Delete
+            {!isPending ? "Delete" : "Deleting..."}
           </button>
         </div>
       </div>

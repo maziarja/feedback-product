@@ -1,5 +1,6 @@
 import { getFeedbackDetails } from "@/app/_actions/productRequest/getFeedbackDetails";
-import UpdateFeedbackForm from "@/app/_components/suggestions/updateFeedbackForm";
+import UpdateFeedbackForm from "@/app/_components/feedbacks/updateFeedbackForm";
+
 import { auth } from "@/lib/auth";
 import Link from "next/link";
 import { redirect } from "next/navigation";
@@ -11,8 +12,8 @@ async function page({ params }: { params: Params }) {
   const session = await auth();
   const { feedbackId } = await params;
   const feedback = await getFeedbackDetails(feedbackId);
-  if (session?.user?.id !== feedback?.userId._id.toString())
-    redirect(`/suggestions/${feedbackId}`);
+  if (session?.user?.email !== feedback?.userId.email)
+    redirect(`/feedbacks/${feedbackId}`);
   return (
     <div className="flex flex-col items-center space-y-6 px-6 pt-9.5 pb-22">
       <div className="w-full max-w-135">

@@ -52,7 +52,6 @@ function LoginForm() {
           id="email"
           name="email"
           type="email"
-          defaultValue={"mazi@gmail.com"}
           placeholder="Enter your email"
           className={`w-full border-b-1 ${errors.email ? "border-red-500" : "border-gray-300"} py-2 text-base font-normal tracking-wide text-gray-800 transition-colors duration-200 outline-none`}
         />
@@ -79,7 +78,6 @@ function LoginForm() {
           {...register("password")}
           id="password"
           name="password"
-          defaultValue={"mazimazi"}
           type={!showPassword ? "password" : "text"}
           placeholder="Enter your password"
           className={`w-full border-b-1 ${errors.password ? "border-red-500" : "border-gray-300"} py-2 text-base font-normal tracking-wide text-gray-800 transition-colors duration-200 outline-none`}

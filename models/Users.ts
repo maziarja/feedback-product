@@ -5,6 +5,7 @@ type UserType = {
   name: string;
   email: string;
   password?: string;
+  provider?: "google";
 } & Document;
 
 const userSchema = new Schema<UserType>(
@@ -12,7 +13,10 @@ const userSchema = new Schema<UserType>(
     image: String,
 
     name: { type: String, required: [true, "Please enter your name"] },
-
+    provider: {
+      type: String,
+      enum: ["google"],
+    },
     email: {
       type: String,
       unique: true,

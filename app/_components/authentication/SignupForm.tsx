@@ -68,6 +68,7 @@ function SignupForm() {
                 fill
                 className="object-cover"
                 alt="profile picture"
+                sizes="72px"
               />
             </div>
           )}

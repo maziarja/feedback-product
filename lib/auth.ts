@@ -51,6 +51,7 @@ export const { signIn, signOut, auth, handlers } = NextAuth({
       if (user) {
         token.id = user.id;
       }
+
       return token;
     },
 
@@ -71,6 +72,7 @@ export const { signIn, signOut, auth, handlers } = NextAuth({
             image: user.image,
             name: user.name,
             password: null,
+            provider: "google",
           });
 
           user.id = dbUser._id.toString();

@@ -3,7 +3,9 @@ import { Jost } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
 import { SidebarProvider } from "./contexts/SidebarContext";
-import { CurrentCommentIdProvider } from "./contexts/currentCommentContext";
+import { CurrentCommentIdProvider } from "./contexts/CurrentCommentContext";
+import { SwitchRoadmapProvider } from "./contexts/SwitchRoadmapContext";
+import { SettingsModalProvider } from "./contexts/SettingsModalContext";
 
 const jost = Jost({
   subsets: ["latin"],
@@ -30,9 +32,13 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${jost.className} antialiased`}>
         <div>
-          <CurrentCommentIdProvider>
-            <SidebarProvider>{children}</SidebarProvider>
-          </CurrentCommentIdProvider>
+          <SettingsModalProvider>
+            <SwitchRoadmapProvider>
+              <CurrentCommentIdProvider>
+                <SidebarProvider>{children}</SidebarProvider>
+              </CurrentCommentIdProvider>
+            </SwitchRoadmapProvider>
+          </SettingsModalProvider>
         </div>
         <Toaster />
       </body>

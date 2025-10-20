@@ -158,11 +158,7 @@ function AddFeedbackForm() {
           disabled={isSubmitting}
           className="bg-purple hover:bg-purple/80 cursor-pointer rounded-lg px-4 py-2.5 text-sm font-bold text-white md:order-2"
         >
-          {!isSubmitting ? (
-            "Add Feedback"
-          ) : (
-            <ImSpinner2 size={24} className="mx-auto animate-spin" />
-          )}
+          {!isSubmitting ? "Add Feedback" : "Creating..."}
         </button>
         <Link
           href={"/feedbacks/suggestions"}

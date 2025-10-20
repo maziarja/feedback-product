@@ -1,6 +1,6 @@
 "use client";
 
-import { useCurrentCommentId } from "@/app/contexts/currentCommentContext";
+import { useCurrentCommentId } from "@/app/contexts/CurrentCommentContext";
 import { FaReply } from "react-icons/fa";
 
 function ReplyButton({

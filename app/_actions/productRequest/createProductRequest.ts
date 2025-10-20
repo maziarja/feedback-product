@@ -8,6 +8,7 @@ import {
   ProductRequestType,
 } from "@/lib/types";
 import ProductRequest from "@/models/ProductRequests";
+import User from "@/models/Users";
 import { revalidatePath } from "next/cache";
 
 type Category = ProductRequestType["category"];
@@ -27,13 +28,13 @@ export async function createProductRequest(
     await connectDB();
     const session = await auth();
     if (!session?.user?.id) throw new Error("Unauthorized");
-    const userId = session.user.id;
+    const currentUser = await User.findOne({ email: session?.user?.email });
 
     const newProductRequest = new ProductRequest({
       description: validCreateFeedback.data.description,
       title: validCreateFeedback.data.title,
       category,
-      userId,
+      userId: currentUser?._id,
     });
 
     await newProductRequest.save();

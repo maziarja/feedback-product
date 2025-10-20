@@ -4,6 +4,7 @@ import { auth } from "@/lib/auth";
 import connectDB from "@/lib/database";
 import ProductRequest from "@/models/ProductRequests";
 import Reply from "@/models/Replies";
+import User from "@/models/Users";
 import { revalidatePath } from "next/cache";
 
 export async function createReply(
@@ -17,11 +18,12 @@ export async function createReply(
   if (content.trim() === "") return;
   try {
     await connectDB();
-    // 1 Create comment
+    const currentUser = await User.findOne({ email: session?.user?.email });
+    // 1 Create reply
     const comment = new Reply({
       content,
       replyTo,
-      userId: session.user?.id,
+      userId: currentUser?._id,
       productRequestId,
       commentId,
     });

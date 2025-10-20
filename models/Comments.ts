@@ -3,7 +3,7 @@ import mongoose, { Model, models, Schema } from "mongoose";
 type CommentType = {
   content: string;
   userId: mongoose.ObjectId;
-  productRequestId: string;
+  productRequestId: mongoose.ObjectId;
 } & Document;
 
 const commentSchema = new Schema<CommentType>(
@@ -20,7 +20,8 @@ const commentSchema = new Schema<CommentType>(
     },
 
     productRequestId: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "ProductRequest",
       required: true,
     },
   },

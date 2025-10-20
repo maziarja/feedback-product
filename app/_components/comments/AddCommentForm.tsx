@@ -12,6 +12,7 @@ function AddCommentForm({ feedbackId }: AddCommentFormProps) {
   const LIMIT_CHAR = 250;
   const [content, setContent] = useState("");
   const [limitChar, setLimitChar] = useState(LIMIT_CHAR);
+  const [isPending, setIsPending] = useState(false);
 
   function handleChange(e: ChangeEvent<HTMLTextAreaElement>) {
     const text = e.target.value;
@@ -21,7 +22,9 @@ function AddCommentForm({ feedbackId }: AddCommentFormProps) {
 
   async function handleCreateComment(e: FormEvent) {
     e.preventDefault();
+    setIsPending(true);
     await createComment(content, feedbackId);
+    setIsPending(false);
     setContent("");
     setLimitChar(LIMIT_CHAR);
   }
@@ -37,7 +40,7 @@ function AddCommentForm({ feedbackId }: AddCommentFormProps) {
       />
       <div className="flex items-center justify-between">
         <p className="text-blue-gray text-sm">{limitChar} Characters left</p>
-        <PrimaryButton onClick={handleCreateComment}>
+        <PrimaryButton isPending={isPending} onClick={handleCreateComment}>
           Post Comment
         </PrimaryButton>
       </div>

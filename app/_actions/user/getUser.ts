@@ -1,20 +1,28 @@
 "use server";
 
+import { auth } from "@/lib/auth";
 import { convertToObject } from "@/lib/convertToObject";
 import connectDB from "@/lib/database";
 import { UserSchema } from "@/lib/types";
 import User from "@/models/Users";
 
-export async function getUser(userId: string) {
-  await connectDB();
-  const userDoc = await User.findById(userId).lean();
-  const user = convertToObject(userDoc);
+export async function getUser() {
+  try {
+    await connectDB();
+    const session = await auth();
+    if (!session?.user?.email) return;
 
-  const validUser = UserSchema.safeParse(user);
-  if (!validUser.success) {
-    console.error(validUser.error);
-    return;
+    const userDoc = await User.findOne({ email: session.user.email }).lean();
+    const user = convertToObject(userDoc);
+    if (!userDoc) return;
+    const validUser = UserSchema.safeParse(user);
+    if (!validUser.success) {
+      console.error(validUser.error);
+      return;
+    }
+
+    return validUser.data;
+  } catch (error) {
+    console.error(error);
   }
-
-  return validUser.data;
 }

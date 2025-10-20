@@ -7,8 +7,8 @@ type ProductRequestType = {
   upVotes: number;
   upvotedBy: string[];
   description: string;
-  userId: mongoose.ObjectId;
   numOfComments: number;
+  userId: mongoose.ObjectId;
 } & Document;
 
 const productRequestSchema = new Schema<ProductRequestType>(
@@ -25,30 +25,28 @@ const productRequestSchema = new Schema<ProductRequestType>(
       type: String,
       enum: ["suggestion", "planned", "in-progress", "live"],
       default: "suggestion",
-      required: [true, "Feedback must have a status"],
     },
 
     upVotes: {
       type: Number,
-      required: true,
       default: 0,
     },
 
     upvotedBy: {
       type: [String],
       default: [],
-      required: true,
     },
 
     description: {
       type: String,
       required: [true, "Feedback must have a description"],
     },
+
     numOfComments: {
       type: Number,
-      required: true,
       default: 0,
     },
+
     userId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
@@ -56,8 +54,16 @@ const productRequestSchema = new Schema<ProductRequestType>(
   },
   {
     timestamps: true,
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
   },
 );
+
+productRequestSchema.virtual("comments", {
+  ref: "Comment",
+  localField: "_id",
+  foreignField: "productRequestId",
+});
 
 const ProductRequest: Model<ProductRequestType> =
   models.ProductRequest ||

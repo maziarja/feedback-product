@@ -8,6 +8,7 @@ import {
   UpdateFeedbackType,
 } from "@/lib/types";
 import ProductRequest from "@/models/ProductRequests";
+import User from "@/models/Users";
 import { revalidatePath } from "next/cache";
 
 type Category = ProductRequestType["category"];
@@ -23,10 +24,10 @@ export async function updateProductRequest(
     const session = await auth();
 
     if (!session?.user?.id) throw new Error("Unauthorized");
-    const currentUser = session.user.id;
+    const currentUser = await User.findOne({ email: session?.user?.email });
 
     const userProductRequests = await ProductRequest.find({
-      userId: currentUser,
+      userId: currentUser?._id,
     });
 
     if (

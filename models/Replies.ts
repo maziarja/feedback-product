@@ -5,7 +5,7 @@ type ReplyType = {
   userId: mongoose.ObjectId;
   replyTo: mongoose.ObjectId;
   commentId: mongoose.ObjectId;
-  productRequestId: string;
+  productRequestId: mongoose.ObjectId;
 } & Document;
 
 const replySchema = new Schema<ReplyType>(
@@ -18,7 +18,7 @@ const replySchema = new Schema<ReplyType>(
     replyTo: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
-      required: true,
+      // required: true,
     },
     userId: {
       type: mongoose.Schema.Types.ObjectId,
@@ -32,7 +32,8 @@ const replySchema = new Schema<ReplyType>(
     },
 
     productRequestId: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "ProductRequest",
       required: true,
     },
   },

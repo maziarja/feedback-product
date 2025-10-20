@@ -4,6 +4,7 @@ import { createContext, useContext, useState } from "react";
 
 type SidebarContextType = {
   toggleSidebar: () => void;
+  closeSidebar: () => void;
   sidebar: boolean;
 };
 
@@ -12,11 +13,13 @@ const SidebarContext = createContext<SidebarContextType | undefined>(undefined);
 export function SidebarProvider({ children }: { children: React.ReactNode }) {
   const [sidebar, setSidebar] = useState(false);
   const toggleSidebar = () => setSidebar((open) => !open);
+  const closeSidebar = () => setSidebar(false);
 
   return (
     <SidebarContext.Provider
       value={{
         toggleSidebar,
+        closeSidebar,
         sidebar,
       }}
     >

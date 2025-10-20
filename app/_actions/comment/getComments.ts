@@ -18,6 +18,7 @@ export async function getComments(feedbackId: string) {
       populate: [{ path: "userId" }, { path: "replyTo" }],
     })
     .lean();
+
   const comment = convertToObject(commentsDoc);
   const validComment = CommentsSchema.safeParse(comment);
   if (!validComment.success) {

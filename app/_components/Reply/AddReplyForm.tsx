@@ -1,5 +1,5 @@
 "use client";
-import { useCurrentCommentId } from "@/app/contexts/currentCommentContext";
+import { useCurrentCommentId } from "@/app/contexts/CurrentCommentContext";
 import PrimaryButton from "../UI/PrimaryButton";
 import { createReply } from "@/app/_actions/reply/createReply";
 import { FormEvent, useState } from "react";
@@ -14,13 +14,16 @@ function AddReplyForm({
   feedbackId: string;
 }) {
   const [content, setContent] = useState("");
+  const [isPending, setIsPending] = useState(false);
   const { currentCommentId, replyToEmail, replyToId, setCurrentCommentId } =
     useCurrentCommentId();
   const isVisible = commentId === currentCommentId;
 
   async function handleAddReply(e: FormEvent) {
     e.preventDefault();
+    setIsPending(true);
     await createReply(content, replyToId, currentCommentId, feedbackId);
+    setIsPending(false);
     setContent("");
     setCurrentCommentId("");
   }
@@ -58,7 +61,9 @@ function AddReplyForm({
               className="bg-very-light-blue-gray ring-dark-blue/20 text-very-dark-blue hover:ring-blue mb-4 field-sizing-content min-h-20 flex-1 resize-none rounded-sm p-4 text-sm ring-1 outline-none hover:cursor-pointer"
             />
             <div className="ml-auto">
-              <PrimaryButton onClick={handleAddReply}>Post Reply</PrimaryButton>
+              <PrimaryButton isPending={isPending} onClick={handleAddReply}>
+                Post Reply
+              </PrimaryButton>
             </div>
           </div>
         </motion.form>

@@ -1,135 +1,188 @@
 {
-  "currentUser": {
-    "image": "./assets/user-images/image-zena.jpg",
-    "name": "Zena Kelley",
-    "username": "velvetround"
-  },
+  "users": [
+    {
+      "_id": { "$oid": "651e1a2f1c9d440000000001" },
+      "name": "Suzanne Chang",
+      "username": "upbeat1811",
+      "image": "/assets/user-images/image-suzanne.jpg",
+      "email": "upbeat1811@gmail.com"
+    },
+    {
+      "_id": { "$oid": "651e1a2f1c9d440000000002" },
+      "name": "Thomas Hood",
+      "username": "brawnybrave",
+      "image": "/assets/user-images/image-thomas.jpg",
+      "email": "brawnybrave@gmail.com"
+    },
+    {
+      "_id": { "$oid": "651e1a2f1c9d440000000003" },
+      "name": "Elijah Moss",
+      "username": "hexagon.bestagon",
+      "image": "/assets/user-images/image-elijah.jpg",
+      "email": "hexagon.bestagon@gmail.com"
+    },
+    {
+      "_id": { "$oid": "651e1a2f1c9d440000000004" },
+      "name": "James Skinner",
+      "username": "hummingbird1",
+      "image": "/assets/user-images/image-james.jpg",
+      "email": "hummingbird1@gmail.com"
+    },
+    {
+      "_id": { "$oid": "651e1a2f1c9d440000000005" },
+      "name": "Anne Valentine",
+      "username": "annev1990",
+      "image": "/assets/user-images/image-anne.jpg",
+      "email": "annev1990@gmail.com"
+    },
+    {
+      "_id": { "$oid": "651e1a2f1c9d440000000006" },
+      "name": "Ryan Welles",
+      "username": "voyager.344",
+      "image": "/assets/user-images/image-ryan.jpg",
+      "email": "voyager.344@gmail.com"
+    },
+    {
+      "_id": { "$oid": "651e1a2f1c9d440000000007" },
+      "name": "George Partridge",
+      "username": "soccerviewer8",
+      "image": "/assets/user-images/image-george.jpg",
+      "email": "soccerviewer8@gmail.com"
+    },
+    {
+      "_id": { "$oid": "651e1a2f1c9d440000000008" },
+      "name": "Javier Pollard",
+      "username": "warlikeduke",
+      "image": "/assets/user-images/image-javier.jpg",
+      "email": "warlikeduke@gmail.com"
+    },
+    {
+      "_id": { "$oid": "651e1a2f1c9d440000000009" },
+      "name": "Roxanne Travis",
+      "username": "peppersprime32",
+      "image": "/assets/user-images/image-roxanne.jpg",
+      "email": "peppersprime32@gmail.com"
+    },
+    {
+      "_id": { "$oid": "651e1a2f1c9d440000000010" },
+      "name": "Victoria Mejia",
+      "username": "arlen_the_marlin",
+      "image": "/assets/user-images/image-victoria.jpg",
+      "email": "arlen_the_marlin@gmail.com"
+    },
+    {
+      "_id": { "$oid": "651e1a2f1c9d440000000011" },
+      "name": "Jackson Barker",
+      "username": "countryspirit",
+      "image": "/assets/user-images/image-jackson.jpg",
+      "email": "countryspirit@gmail.com"
+    },
+    {
+      "_id": { "$oid": "651e1a2f1c9d440000000012" },
+      "name": "Zena Kelley",
+      "username": "velvetround",
+      "image": "/assets/user-images/image-zena.jpg",
+      "email": "velvetround@gmail.com"
+    }
+  ],
+
   "productRequests": [
     {
-      "id": 1,
+      "_id": { "$oid": "651e1a2f1c9d440000001001" },
+      "userId": { "$oid": "651e1a2f1c9d440000000004" },
       "title": "Add tags for solutions",
       "category": "enhancement",
-      "upvotes": 112,
       "status": "suggestion",
       "description": "Easier to search for solutions based on a specific stack.",
+      "upvotes": 112,
       "comments": [
         {
-          "id": 1,
+          "_id": { "$oid": "651e1a2f1c9d440000002002" },
           "content": "Awesome idea! Trying to find framework-specific projects within the hubs can be tedious",
-          "user": {
-            "image": "./assets/user-images/image-suzanne.jpg",
-            "name": "Suzanne Chang",
-            "username": "upbeat1811"
-          }
+          "userId": { "$oid": "651e1a2f1c9d440000000001" }
         },
         {
-          "id": 2,
+          "_id": { "$oid": "651e1a2f1c9d440000002003" },
           "content": "Please use fun, color-coded labels to easily identify them at a glance",
-          "user": {
-            "image": "./assets/user-images/image-thomas.jpg",
-            "name": "Thomas Hood",
-            "username": "brawnybrave"
-          }
+          "userId": { "$oid": "651e1a2f1c9d440000000002" }
         }
       ]
     },
     {
-      "id": 2,
+      "_id": { "$oid": "651e1a2f1c9d440000001002" },
+      "userId": { "$oid": "651e1a2f1c9d440000000007" },
       "title": "Add a dark theme option",
       "category": "feature",
-      "upvotes": 99,
       "status": "suggestion",
       "description": "It would help people with light sensitivities and who prefer dark mode.",
+      "upvotes": 99,
       "comments": [
         {
-          "id": 3,
+          "_id": { "$oid": "651e1a2f1c9d444000002003" },
           "content": "Also, please allow styles to be applied based on system preferences. I would love to be able to browse Frontend Mentor in the evening after my device’s dark mode turns on without the bright background it currently has.",
-          "user": {
-            "image": "./assets/user-images/image-elijah.jpg",
-            "name": "Elijah Moss",
-            "username": "hexagon.bestagon"
-          }
+          "userId": { "$oid": "651e1a2f1c9d440000000003" }
         },
         {
-          "id": 4,
-          "content": "Second this! I do a lot of late night coding and reading. Adding a dark theme can be great for preventing eye strain and the headaches that result. It’s also quite a trend with modern apps and  apparently saves battery life.",
-          "user": {
-            "image": "./assets/user-images/image-james.jpg",
-            "name": "James Skinner",
-            "username": "hummingbird1"
-          },
+          "_id": { "$oid": "651e1a2f1c9d440000002004" },
+          "content": "Second this! I do a lot of late night coding and reading. Adding a dark theme can be great for preventing eye strain and the headaches that result. It’s also quite a trend with modern apps and apparently saves battery life.",
+          "userId": { "$oid": "651e1a2f1c9d440000000004" },
           "replies": [
             {
+              "_id": { "$oid": "651e1a2f1c9d440000003004" },
               "content": "While waiting for dark mode, there are browser extensions that will also do the job. Search for 'dark theme' followed by your browser. There might be a need to turn off the extension for sites with naturally black backgrounds though.",
-              "replyingTo": "hummingbird1",
-              "user": {
-                "image": "./assets/user-images/image-anne.jpg",
-                "name": "Anne Valentine",
-                "username": "annev1990"
-              }
+              "userId": { "$oid": "651e1a2f1c9d440000000005" },
+              "replyTo": "651e1a2f1c9d440000000004"
             },
             {
+              "_id": { "$oid": "651e1a2f1c9d440000003002" },
               "content": "Good point! Using any kind of style extension is great and can be highly customizable, like the ability to change contrast and brightness. I'd prefer not to use one of such extensions, however, for security and privacy reasons.",
-              "replyingTo": "annev1990",
-              "user": {
-                "image": "./assets/user-images/image-ryan.jpg",
-                "name": "Ryan Welles",
-                "username": "voyager.344"
-              }
+              "userId": { "$oid": "651e1a2f1c9d440000000006" },
+              "replyTo": "651e1a2f1c9d440000000005"
             }
           ]
         }
       ]
     },
     {
-      "id": 3,
+      "_id": { "$oid": "651e1a2f1c9d440000001003" },
+      "userId": { "$oid": "651e1a2f1c9d440000000003" },
       "title": "Q&A within the challenge hubs",
       "category": "feature",
-      "upvotes": 65,
       "status": "suggestion",
       "description": "Challenge-specific Q&A would make for easy reference.",
+      "upvotes": 65,
       "comments": [
         {
-          "id": 5,
+          "_id": { "$oid": "651e1a2f1c9d440000002005" },
           "content": "Much easier to get answers from devs who can relate, since they've either finished the challenge themselves or are in the middle of it.",
-          "user": {
-            "image": "./assets/user-images/image-george.jpg",
-            "name": "George Partridge",
-            "username": "soccerviewer8"
-          }
+          "userId": { "$oid": "651e1a2f1c9d440000000007" }
         }
       ]
     },
     {
-      "id": 4,
+      "_id": { "$oid": "651e1a2f1c9d440000001004" },
+      "userId": { "$oid": "651e1a2f1c9d440000000002" },
       "title": "Add image/video upload to feedback",
       "category": "enhancement",
-      "upvotes": 51,
       "status": "suggestion",
       "description": "Images and screencasts can enhance comments on solutions.",
+      "upvotes": 51,
       "comments": [
-        { 
-          "id": 6,
+        {
+          "_id": { "$oid": "651e1a2f1c9d440000002006" },
           "content": "Right now, there is no ability to add images while giving feedback which isn't ideal because I have to use another app to show what I mean",
-          "user": {
-            "image": "./assets/user-images/image-javier.jpg",
-            "name": "Javier Pollard",
-            "username": "warlikeduke"
-          }
+          "userId": { "$oid": "651e1a2f1c9d440000000008" }
         },
         {
-          "id": 7,
+          "_id": { "$oid": "651e1a2f1c9d440000002007" },
           "content": "Yes I'd like to see this as well. Sometimes I want to add a short video or gif to explain the site's behavior..",
-          "user": {
-            "image": "./assets/user-images/image-roxanne.jpg",
-            "name": "Roxanne Travis",
-            "username": "peppersprime32"
-          }
+          "userId": { "$oid": "651e1a2f1c9d440000000009" }
         }
       ]
     },
     {
-      "id": 5,
+      "_id": { "$oid": "651e1a2f1c9d440000001005" },
+      "userId": { "$oid": "651e1a2f1c9d440000000005" },
       "title": "Ability to follow others",
       "category": "feature",
       "upvotes": 42,
@@ -137,38 +190,28 @@
       "description": "Stay updated on comments and solutions other people post.",
       "comments": [
         {
-          "id": 8,
+          "_id": { "$oid": "651e1a2f1c9d440000002008" },
           "content": "I also want to be notified when devs I follow submit projects on FEM. Is in-app notification also in the pipeline?",
-          "user": {
-            "image": "./assets/user-images/image-victoria.jpg",
-            "name": "Victoria Mejia",
-            "username": "arlen_the_marlin"
-          },
+          "userId": { "$oid": "651e1a2f1c9d440000000010" },
           "replies": [
             {
+              "_id": { "$oid": "651e1a2f1c9d440000003006" },
               "content": "Bumping this. It would be good to have a tab with a feed of people I follow so it's easy to see what challenges they’ve done lately. I learn a lot by reading good developers' code.",
-              "replyingTo": "arlen_the_marlin",
-              "user": {
-                "image": "./assets/user-images/image-zena.jpg",
-                "name": "Zena Kelley",
-                "username": "velvetround"
-              }
+              "replyTo": "651e1a2f1c9d440000000010",
+              "userId": { "$oid": "651e1a2f1c9d440000000012" }
             }
           ]
         },
         {
-          "id": 9,
+          "_id": { "$oid": "651e1a2f1c9d440000002009" },
           "content": "I've been saving the profile URLs of a few people and I check what they’ve been doing from time to time. Being able to follow them solves that",
-          "user": {
-            "image": "./assets/user-images/image-jackson.jpg",
-            "name": "Jackson Barker",
-            "username": "countryspirit"
-          }
+          "userId": { "$oid": "651e1a2f1c9d440000000011" }
         }
       ]
     },
     {
-      "id": 6,
+      "_id": { "$oid": "651e1a2f1c9d440000001006" },
+      "userId": { "$oid": "651e1a2f1c9d440000000007" },
       "title": "Preview images not loading",
       "category": "bug",
       "upvotes": 3,
@@ -176,7 +219,8 @@
       "description": "Challenge preview images are missing when you apply a filter."
     },
     {
-      "id": 7,
+      "_id": { "$oid": "651e1a2f1c9d440000001007" },
+      "userId": { "$oid": "651e1a2f1c9d440000000008" },
       "title": "More comprehensive reports",
       "category": "feature",
       "upvotes": 123,
@@ -184,27 +228,20 @@
       "description": "It would be great to see a more detailed breakdown of solutions.",
       "comments": [
         {
-          "id": 10,
+          "_id": { "$oid": "654321abcdef123456789018" },
           "content": "This would be awesome! It would be so helpful to see an overview of my code in a way that makes it easy to spot where things could be improved.",
-          "user": {
-            "image": "./assets/user-images/image-victoria.jpg",
-            "name": "Victoria Mejia",
-            "username": "arlen_the_marlin"
-          }
+          "userId": { "$oid": "651e1a2f1c9d440000000010" }
         },
         {
-          "id": 11,
+          "_id": { "$oid": "654321abcdef123456789019" },
           "content": "Yeah, this would be really good. I'd love to see deeper insights into my code!",
-          "user": {
-            "image": "./assets/user-images/image-jackson.jpg",
-            "name": "Jackson Barker",
-            "username": "countryspirit"
-          }
+          "userId": { "$oid": "651e1a2f1c9d440000000011" }
         }
       ]
     },
     {
-      "id": 8,
+      "_id": { "$oid": "654321abcdef123456789020" },
+      "userId": { "$oid": "651e1a2f1c9d440000000009" },
       "title": "Learning paths",
       "category": "feature",
       "upvotes": 28,
@@ -212,18 +249,15 @@
       "description": "Sequenced projects for different goals to help people improve.",
       "comments": [
         {
-          "id": 12,
+          "_id": { "$oid": "654321abcdef123456789021" },
           "content": "Having a path through the challenges that I could follow would be brilliant! Sometimes I'm not sure which challenge would be the best next step to take. So this would help me navigate through them!",
-          "user": {
-            "image": "./assets/user-images/image-george.jpg",
-            "name": "George Partridge",
-            "username": "soccerviewer8"
-          }
+          "userId": { "$oid": "651e1a2f1c9d440000000007" }
         }
       ]
     },
     {
-      "id": 9,
+      "_id": { "$oid": "654321abcdef123456789022" },
+      "userId": { "$oid": "651e1a2f1c9d440000000011" },
       "title": "One-click portfolio generation",
       "category": "feature",
       "upvotes": 62,
@@ -231,18 +265,15 @@
       "description": "Add ability to create professional looking portfolio from profile.",
       "comments": [
         {
-          "id": 13,
+          "_id": { "$oid": "654321abcdef123456789023" },
           "content": "I haven't built a portfolio site yet, so this would be really helpful. Might it also be possible to choose layout and colour themes?!",
-          "user": {
-            "image": "./assets/user-images/image-ryan.jpg",
-            "name": "Ryan Welles",
-            "username": "voyager.344"
-          }
+          "userId": { "$oid": "651e1a2f1c9d440000000006" }
         }
       ]
     },
     {
-      "id": 10,
+      "_id": { "$oid": "654321abcdef123456789024" },
+      "userId": { "$oid": "651e1a2f1c9d440000000011" },
       "title": "Bookmark challenges",
       "category": "feature",
       "upvotes": 31,
@@ -250,18 +281,15 @@
       "description": "Be able to bookmark challenges to take later on.",
       "comments": [
         {
-          "id": 14,
+          "_id": { "$oid": "654321abcdef123456789025" },
           "content": "This would be great! At the moment, I'm just starting challenges in order to save them. But this means the My Challenges section is overflowing with projects and is hard to manage. Being able to bookmark challenges would be really helpful.",
-          "user": {
-            "image": "./assets/user-images/image-suzanne.jpg",
-            "name": "Suzanne Chang",
-            "username": "upbeat1811"
-          }
+          "userId": { "$oid": "651e1a2f1c9d440000000001" }
         }
       ]
     },
     {
-      "id": 11,
+      "_id": { "$oid": "654321abcdef123456789026" },
+      "userId": { "$oid": "651e1a2f1c9d440000000004" },
       "title": "Animated solution screenshots",
       "category": "bug",
       "upvotes": 9,
@@ -269,7 +297,8 @@
       "description": "Screenshots of solutions with animations don’t display correctly."
     },
     {
-      "id": 12,
+      "_id": { "$oid": "654321abcdef123456789027" },
+      "userId": { "$oid": "651e1a2f1c9d440000000005" },
       "title": "Add micro-interactions",
       "category": "enhancement",
       "upvotes": 71,
@@ -277,22 +306,15 @@
       "description": "Small animations at specific points can add delight.",
       "comments": [
         {
-          "id": 15,
+          "_id": { "$oid": "654321abcdef123456789028" },
           "content": "I'd love to see this! It always makes me so happy to see little details like these on websites.",
-          "user": {
-            "image": "./assets/user-images/image-victoria.jpg",
-            "name": "Victoria Mejia",
-            "username": "arlen_the_marlin"
-          },
+          "userId": { "$oid": "651e1a2f1c9d440000000010" },
           "replies": [
             {
+              "_id": { "$oid": "654321abcdef123456789029" },
               "content": "Me too! I'd also love to see celebrations at specific points as well. It would help people take a moment to celebrate their achievements!",
-              "replyingTo": "arlen_the_marlin",
-              "user": {
-                "image": "./assets/user-images/image-suzanne.jpg",
-                "name": "Suzanne Chang",
-                "username": "upbeat1811"
-              }
+              "replyTo": "651e1a2f1c9d440000000010",
+              "userId": { "$oid": "651e1a2f1c9d440000000001" }
             }
           ]
         }

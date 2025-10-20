@@ -29,30 +29,23 @@ export const UserSchema = z.object({
   image: z.string().optional(),
   name: z.string(),
   _id: z.string(),
+  provider: z.enum(["google"]).optional(),
 });
 
 export type UserType = z.infer<typeof UserSchema>;
 
-// *********** PRODUCT REQUESTS  **************
+// ************** DELETE USER **************
 
-export const productRequestSchema = z.object({
-  title: z.string(),
-  category: z.enum(["feature", "UI", "UX", "enhancement", "bug"]),
-  status: z.enum(["suggestion", "planned", "in-progress", "live"]),
-  upVotes: z.number(),
-  description: z.string(),
-  userId: UserSchema,
-  numOfComments: z.number(),
+export const deleteUserSchema = z.object({
+  email: z.email(),
+  image: z.string().optional(),
+  name: z.string(),
   _id: z.string(),
+  password: z.string().nullable(),
+  provider: z.enum(["google"]).optional(),
 });
 
-export type ProductRequestType = z.infer<typeof productRequestSchema>;
-
-// *********** PRODUCTS REQUESTS  **************
-
-export const productsRequestSchema = z.array(productRequestSchema);
-
-export type ProductsRequestType = z.infer<typeof productsRequestSchema>;
+export type DeleteUserType = z.infer<typeof deleteUserSchema>;
 
 // ************** REPLY **************
 
@@ -85,6 +78,39 @@ export const CommentsSchema = z.array(CommentSchema);
 
 export type CommentType = z.infer<typeof CommentSchema>;
 
+// *********** FEEDBACK DETAILS  **************
+
+export const feedBackDetailsSchema = z.object({
+  title: z.string(),
+  category: z.enum(["feature", "UI", "UX", "enhancement", "bug"]),
+  status: z.enum(["suggestion", "planned", "in-progress", "live"]),
+  upVotes: z.number(),
+  description: z.string(),
+  userId: UserSchema,
+  numOfComments: z.number(),
+  _id: z.string(),
+  comments: CommentsSchema,
+});
+
+export type ProductRequestType = z.infer<typeof feedBackDetailsSchema>;
+
+// *********** PRODUCT REQUESTS  **************
+
+export const productRequestsSchema = z.array(
+  z.object({
+    title: z.string(),
+    category: z.enum(["feature", "UI", "UX", "enhancement", "bug"]),
+    status: z.enum(["suggestion", "planned", "in-progress", "live"]),
+    upVotes: z.number(),
+    description: z.string(),
+    userId: UserSchema.partial(),
+    numOfComments: z.number(),
+    _id: z.string(),
+  }),
+);
+
+export type ProductRequestsType = z.infer<typeof productRequestsSchema>;
+
 // *********** CREATE FEEDBACK  **************
 
 export const createFeedbackSchema = z.object({
@@ -99,7 +125,6 @@ export type CreateFeedbackType = z.infer<typeof createFeedbackSchema>;
 export const updateFeedbackSchema = z.object({
   description: z.string().trim().min(1, "Can't be empty"),
   title: z.string().trim().min(1, "Can't be empty"),
-  
 });
 
 export type UpdateFeedbackType = z.infer<typeof updateFeedbackSchema>;

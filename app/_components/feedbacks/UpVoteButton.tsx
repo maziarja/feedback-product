@@ -21,7 +21,7 @@ function UpVoteButton({ upVotes, feedbackId }: UpVoteButtonProps) {
   return (
     <button
       onClick={handleClick}
-      className="bg-light-blue-gray flex cursor-pointer items-center gap-1 self-start rounded-xl px-2 py-1.5 text-sm md:flex-col md:gap-2.5"
+      className="bg-light-blue-gray flex cursor-pointer items-center gap-1 self-start rounded-xl px-2 py-1.5 text-sm @[688px]:flex-col @[688px]:gap-2.5"
     >
       <MdKeyboardArrowUp size={20} className="fill-blue" />
       <p className="text-dark-blue font-bold">{upVotes}</p>

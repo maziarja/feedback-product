@@ -1,41 +1,43 @@
 import { CommentType } from "@/lib/types";
 import Image from "next/image";
 import ReplyButton from "./ReplyButton";
-import ReplyContainer from "../Reply/RepliesList";
 import defaultAvatar from "@/public/assets/user-images/defaultAvatar.png";
 import { auth } from "@/lib/auth";
 import DeleteButton from "./DeleteButton";
 import AddReplyForm from "../Reply/AddReplyForm";
+import ReplyContainer from "../Reply/ReplyContainer";
 
 type CommentContainerProps = {
   comment: CommentType;
-  feedbackId: string;
 };
 
-async function CommentContainer({
-  comment,
-  feedbackId,
-}: CommentContainerProps) {
+async function CommentContainer({ comment }: CommentContainerProps) {
   const session = await auth();
-  const { userId } = comment;
-  const isCurrentUser = session?.user?.id === comment.userId._id;
-  const imageSrc = userId?.image ? `${userId?.image}` : defaultAvatar;
+
+  const isCurrentUser = session?.user?.email === comment.userId.email;
+  const imageSrc = comment.userId.image
+    ? `${comment.userId?.image}`
+    : defaultAvatar;
   if (!comment) return null;
   return (
     <div className="space-y-6">
       <div className="space-y-4 bg-white">
         <div className="flex items-center gap-4">
-          <Image
-            src={imageSrc}
-            width={40}
-            height={40}
-            alt="profile picture "
-            className="rounded-full"
-          />
+          <div className="relative h-10 w-10 overflow-hidden rounded-full">
+            <Image
+              src={imageSrc}
+              fill
+              alt="profile picture "
+              className="rounded-full object-cover"
+              sizes="40px"
+            />
+          </div>
           <div className="space-y-1">
-            <p className="text-dark-blue text-sm font-bold">{userId?.name}</p>
+            <p className="text-dark-blue text-sm font-bold">
+              {comment.userId?.name}
+            </p>
             <p className="text-blue-gray text-sm">
-              @{userId?.email.split("@")[0]}
+              @{comment.userId?.email.split("@")[0]}
             </p>
           </div>
           <div className="relative ml-auto">
@@ -61,7 +63,10 @@ async function CommentContainer({
               commentId={comment._id}
             />
           ))}
-        <AddReplyForm commentId={comment._id} feedbackId={feedbackId} />
+        <AddReplyForm
+          commentId={comment._id}
+          feedbackId={comment.productRequestId}
+        />
       </div>
     </div>
   );

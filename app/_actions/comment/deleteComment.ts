@@ -4,6 +4,7 @@ import { auth } from "@/lib/auth";
 import connectDB from "@/lib/database";
 import Comment from "@/models/Comments";
 import ProductRequest from "@/models/ProductRequests";
+import User from "@/models/Users";
 import { revalidatePath } from "next/cache";
 import { ParamValue } from "next/dist/server/request/params";
 
@@ -16,11 +17,13 @@ export async function deleteComment(
   const comment = await Comment.findById(commentId);
 
   if (!comment) return;
-  if (comment.userId.toString() !== session.user?.id)
+  const currentUser = await User.findOne({ email: session?.user?.email });
+  if (comment.userId.toString() !== currentUser?._id.toString())
     throw new Error("You are not allowed to delete this comment");
 
   try {
     await connectDB();
+
     // 1 Delete comment
     await comment.deleteOne();
 
@@ -29,10 +32,10 @@ export async function deleteComment(
     if (productRequest) {
       productRequest.numOfComments -= 1;
       await productRequest.save();
-
-      revalidatePath(`/feedbacks/${productRequestId}`);
-      return { success: true };
     }
+
+    revalidatePath(`/feedbacks/${productRequestId}`);
+    return { success: true };
   } catch (error) {
     console.error(error);
   }

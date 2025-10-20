@@ -7,17 +7,16 @@ import {
 } from "@/lib/types";
 import { useState } from "react";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
-import CategoryDropdown from "./CategoryDropdown";
 import { AnimatePresence, motion } from "motion/react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ImSpinner2 } from "react-icons/im";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import IconEditFeedback from "../UI/IconEditFeedback";
-import StatusDropdown from "./StatusDropdown";
 import { updateProductRequest } from "@/app/_actions/productRequest/updateProductRequest";
 import DeleteModal from "../comments/DeleteModal";
+import CategoryDropdown from "./CategoryDropdown";
+import StatusDropdown from "./StatusDropdown";
 
 type Category = ProductRequestType["category"];
 type Status = ProductRequestType["status"];
@@ -242,11 +241,7 @@ function UpdateFeedbackForm({ feedback }: UpdateFeedbackFormProps) {
             disabled={isSubmitting}
             className="bg-purple hover:bg-purple/80 cursor-pointer rounded-lg px-4 py-2.5 text-sm font-bold text-white md:order-3"
           >
-            {!isSubmitting ? (
-              "Save Changes"
-            ) : (
-              <ImSpinner2 size={24} className="mx-auto animate-spin" />
-            )}
+            {!isSubmitting ? "Save Changes" : "Saving..."}
           </button>
           <Link
             href={`/feedbacks/${feedbackId}`}

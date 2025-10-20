@@ -1,4 +1,4 @@
-import AddFeedbackForm from "@/app/_components/suggestions/AddFeedbackForm";
+import AddFeedbackForm from "@/app/_components/feedbacks/AddFeedbackForm";
 import Link from "next/link";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 
