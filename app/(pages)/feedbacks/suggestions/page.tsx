@@ -8,14 +8,15 @@ import { SortBy } from "@/app/_components/suggestions/SortbyDropDown";
 import Sidebar from "@/app/_components/suggestions/Sidebar";
 
 type PageProps = {
-  searchParams: {
+  searchParams: Promise<{
     filterBy: ProductRequestType["category"] | "all";
     sortBy: SortBy;
-  };
+  }>;
 };
 
 async function Page({ searchParams }: PageProps) {
-  const { filterBy, sortBy } = searchParams;
+  const { filterBy, sortBy } = await searchParams;
+
   return (
     <div className="relative md:px-10 md:py-15 lg:flex lg:justify-center lg:gap-7.5">
       <Navbar />
