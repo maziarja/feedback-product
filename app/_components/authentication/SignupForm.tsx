@@ -55,7 +55,6 @@ function SignupForm() {
       router.push("/login");
     }
   }
-
   return (
     <>
       <form
@@ -83,7 +82,8 @@ function SignupForm() {
             {...register("image")}
             type="file"
             name="image"
-            accept="image/*"
+            // accept="image/*"
+            accept=".jpg,.jpeg,.png"
             className="absolute inset-0 cursor-pointer appearance-none opacity-0"
             onChange={handleChangeImage}
           />
