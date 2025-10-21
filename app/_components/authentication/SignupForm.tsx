@@ -38,6 +38,13 @@ function SignupForm() {
   }
 
   async function onSubmit(data: FieldValues) {
+    const fileInput = document.querySelector(
+      'input[name="image"]',
+    ) as HTMLInputElement;
+    const file = fileInput?.files?.[0];
+    if (file) {
+      data.image = [file];
+    }
     const result = await registerUser(data);
     if (!result.success)
       setError("root", { type: "server", message: result.errorMessage });
