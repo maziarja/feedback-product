@@ -20,9 +20,9 @@ function DeleteAccountModal({ user }: { user: UserType }) {
     const password = formData.get("password") as string;
     const result = await deleteAccount(user._id, password);
     if (result?.success) {
-      setIsPending(false);
-      await signOut({ callbackUrl: "/login" });
       setIsPending(true);
+      await signOut({ callbackUrl: "/login" });
+      setIsPending(false);
     }
   }
 
