@@ -7,25 +7,27 @@ import { deleteDbData } from "./deleteDbData";
 import User from "@/models/Users";
 import { convertToObject } from "@/lib/convertToObject";
 import { deleteUserSchema } from "@/lib/types";
+import { redirect } from "next/navigation";
 
 export async function deleteAccount(userId: string, password?: string) {
   try {
     const session = await auth();
-    // check if userId === session
     const userDoc = await User.findOne({ email: session?.user?.email }).lean();
+    if (!userDoc) return { success: false };
     const userNoType = convertToObject(userDoc);
-    if (!userDoc) return;
     const validUser = deleteUserSchema.safeParse(userNoType);
     if (!validUser.success) {
       console.error(validUser.error);
-      return;
+      return { success: false };
     }
     const user = validUser.data;
+    // check if userId === session
     if (!session?.user?.id) throw new Error("Unauthorized");
     if (userId !== user?._id) throw new Error("Unauthorized");
     // check if user id from google
     if (user.provider === "google") {
       deleteDbData(user);
+      return { success: true };
     } else {
       const isPasswordCorrect = await bcrypt.compare(
         password as string,
@@ -43,9 +45,9 @@ export async function deleteAccount(userId: string, password?: string) {
         }
         // delete db data
         deleteDbData(user);
+        return { success: true };
       }
     }
-    return { success: true };
   } catch (error) {
     console.error(error);
     return { success: false };

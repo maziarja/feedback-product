@@ -6,6 +6,7 @@ import { UserType } from "@/lib/types";
 import { signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
+import toast from "react-hot-toast";
 import { ImSpinner2 } from "react-icons/im";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 
@@ -16,13 +17,17 @@ function DeleteAccountModal({ user }: { user: UserType }) {
   const [isPending, setIsPending] = useState(false);
 
   async function handleSubmitDeleteAccount(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const password = formData.get("password") as string;
+    setIsPending(true);
     const result = await deleteAccount(user._id, password);
+    setIsPending(false);
     if (result?.success) {
-      setIsPending(true);
-      await signOut({ callbackUrl: "/login" });
-      setIsPending(false);
+      signOut({ callbackUrl: "/login" });
+      toast.success("Your account has been deleted successfully");
+    } else {
+      toast.error("Something went wrong");
     }
   }
 
