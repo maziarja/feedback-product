@@ -6,7 +6,7 @@ const fileListType =
 
 export const registerUserSchema = z.object({
   name: z.string().trim().min(2, "Name must be at least 2 characters"),
-  email: z.email(),
+  email: z.email().toLowerCase(),
   password: z.string().trim().min(6, "Password must be at least 6 characters"),
   image: fileListType.optional(),
 });
@@ -16,7 +16,7 @@ export type RegisterUserType = z.infer<typeof registerUserSchema>;
 // *********** LOGIN USER **************
 
 export const loginUserSchema = z.object({
-  email: z.email(),
+  email: z.email().toLowerCase(),
   password: z.string().trim().min(6, "Password must be at least 6 characters"),
 });
 
