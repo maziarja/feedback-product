@@ -7,7 +7,6 @@ import { deleteDbData } from "./deleteDbData";
 import User from "@/models/Users";
 import { convertToObject } from "@/lib/convertToObject";
 import { deleteUserSchema } from "@/lib/types";
-import { redirect } from "next/navigation";
 
 export async function deleteAccount(userId: string, password?: string) {
   try {

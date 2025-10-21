@@ -17,7 +17,6 @@ async function ReplyContainer({ reply, commentId }: ReplyContainerProps) {
   const imageSrc = reply.userId?.image
     ? `${reply.userId?.image}`
     : defaultAvatar;
-
   return (
     <div className="space-y-6 bg-white">
       <div className="space-y-4">
@@ -53,7 +52,7 @@ async function ReplyContainer({ reply, commentId }: ReplyContainerProps) {
         </div>
         <div className="text-blue-gray space-x-2 text-sm">
           <span className="text-purple text-sm font-bold">
-            @{reply.replyTo?.email?.split("@")[0]}
+            @{reply.replyTo?.email?.split("@")[0] || "Unknown"}
           </span>
           <span>{reply.content}</span>
         </div>

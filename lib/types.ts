@@ -53,7 +53,7 @@ export const replySchema = z.object({
   content: z.string(),
   userId: UserSchema,
   _id: z.string(),
-  replyTo: UserSchema,
+  replyTo: UserSchema.nullable(),
   productRequestId: z.string(),
   commentId: z.string(),
 });
