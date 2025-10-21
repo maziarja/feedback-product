@@ -8,7 +8,7 @@ import {
   useState,
 } from "react";
 
-type currentCommentIdType = {
+type CurrentCommentIdType = {
   currentCommentId: string;
   setCurrentCommentId: Dispatch<SetStateAction<string>>;
   replyToId: string;
@@ -17,7 +17,7 @@ type currentCommentIdType = {
   setReplyToEmail: Dispatch<SetStateAction<string>>;
 };
 
-const CurrentCommentIdContext = createContext<currentCommentIdType | undefined>(
+const CurrentCommentIdContext = createContext<CurrentCommentIdType | undefined>(
   undefined,
 );
 
@@ -46,7 +46,7 @@ export function CurrentCommentIdProvider({
 }
 
 export const useCurrentCommentId = () => {
-  const context = useContext<currentCommentIdType | undefined>(
+  const context = useContext<CurrentCommentIdType | undefined>(
     CurrentCommentIdContext,
   );
   if (context === undefined)
