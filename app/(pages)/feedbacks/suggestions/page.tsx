@@ -6,7 +6,6 @@ import Logo from "@/app/_components/suggestions/Logo";
 import { ProductRequestType } from "@/lib/types";
 import { SortBy } from "@/app/_components/suggestions/SortbyDropDown";
 import Sidebar from "@/app/_components/suggestions/Sidebar";
-import { auth } from "@/lib/auth";
 
 type PageProps = {
   searchParams: {
@@ -16,8 +15,7 @@ type PageProps = {
 };
 
 async function Page({ searchParams }: PageProps) {
-  const { filterBy, sortBy } = await searchParams;
-  const session = await auth();
+  const { filterBy, sortBy } = searchParams;
   return (
     <div className="relative md:px-10 md:py-15 lg:flex lg:justify-center lg:gap-7.5">
       <Navbar />
