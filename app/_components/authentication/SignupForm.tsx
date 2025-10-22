@@ -31,9 +31,12 @@ function SignupForm() {
 
   function handleChangeImage(e: ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
-    if (file) {
+    if (file && file.size < 1000000) {
+      setError("image", { message: "" });
       const url = URL.createObjectURL(file);
       setImage(url);
+    } else {
+      setError("image", { message: "Image must be below 1MB" });
     }
   }
 
@@ -63,7 +66,9 @@ function SignupForm() {
       >
         <label className="absolute -top-9 right-1/2 translate-x-1/2 md:-top-11">
           {!image && (
-            <div className="rounded-full bg-[#EFF1F3] p-6 md:p-7">
+            <div
+              className={`rounded-full bg-[#EFF1F3] p-6 md:p-7 ${errors.image ? "ring-4 ring-red-400" : ""}`}
+            >
               <IoCamera color="#606060" size={24} className="md:h-8 md:w-8" />
             </div>
           )}
@@ -186,6 +191,19 @@ function SignupForm() {
               className="text-sm font-normal text-red-500"
             >
               {errors.root.message}
+            </motion.p>
+          )}
+        </AnimatePresence>
+        <AnimatePresence>
+          {errors.image && (
+            <motion.p
+              initial={{ opacity: 0, x: -100 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -100 }}
+              transition={{ duration: 0.6 }}
+              className="text-sm font-normal text-red-500"
+            >
+              {errors.image.message as string}
             </motion.p>
           )}
         </AnimatePresence>

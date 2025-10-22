@@ -32,6 +32,9 @@ export async function registerUser(data: FieldValues) {
     );
 
     // Upload profile picture
+    if (validRegisterUser.data.image[0].size > 1000000) {
+      return { success: false, errorMessage: "Image must be below 1MB" };
+    }
     const imageFile = validRegisterUser.data.image as FileList;
     let result;
     if (imageFile[0]?.name !== "undefined" && imageFile.length > 0) {

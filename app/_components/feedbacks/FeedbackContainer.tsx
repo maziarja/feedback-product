@@ -47,7 +47,9 @@ async function FeedbackContainer({ feedback }: FeedbackContainerProps) {
           </p>
           <p className="text-dark-blue font-bold">{title}</p>
         </div>
-        <p className="text-blue-gray @[688px]:mb-3">{description}</p>
+        <p className="text-blue-gray whitespace-pre-wrap @[688px]:mb-3">
+          {description}
+        </p>
         <p className="bg-light-blue-gray text-blue self-start rounded-xl px-4 py-1.5 font-semibold">
           {category.charAt(0).toUpperCase() + category.slice(1)}
         </p>

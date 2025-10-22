@@ -34,6 +34,7 @@ function AddCommentForm({ feedbackId }: AddCommentFormProps) {
       <p className="text-dark-blue mb-6 text-lg font-bold">Add Comment</p>
       <textarea
         value={content}
+        id="comment"
         onChange={handleChange}
         placeholder="Type your comment here"
         className="bg-very-light-blue-gray text-very-dark-blue ring-dark-blue/20 hover:ring-blue mb-4 field-sizing-content min-h-20 w-full cursor-pointer resize-none rounded-sm p-4 text-sm ring-1 outline-none"

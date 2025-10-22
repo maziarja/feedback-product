@@ -53,6 +53,7 @@ function AddReplyForm({
           </button>
           <div className="flex flex-col gap-4 md:flex-row">
             <textarea
+              id="reply"
               value={content}
               onChange={(e) => setContent(e.target.value)}
               placeholder={

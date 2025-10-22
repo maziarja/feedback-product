@@ -52,7 +52,9 @@ async function CommentContainer({ comment }: CommentContainerProps) {
             )}
           </div>
         </div>
-        <p className="text-blue-gray text-sm">{comment.content}</p>
+        <p className="text-blue-gray text-sm whitespace-pre-wrap">
+          {comment.content}
+        </p>
       </div>
       <div className="border-dark-blue/10 space-y-6 border-l-1 pl-6">
         {comment.replies &&

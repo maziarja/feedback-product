@@ -28,7 +28,7 @@ function SettingsModal() {
         <TiUserDelete className="fill-very-dark-blue" size={18} />
         <button
           onClick={handleClickDeleteAccount}
-          className="text-very-dark-blue cursor-pointer text-sm font-semibold md:hidden md:text-white"
+          className="text-very-dark-blue cursor-pointer text-sm md:hidden md:font-semibold md:text-white"
         >
           Delete Account
         </button>
