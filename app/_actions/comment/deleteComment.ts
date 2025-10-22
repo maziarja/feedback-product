@@ -4,6 +4,7 @@ import { auth } from "@/lib/auth";
 import connectDB from "@/lib/database";
 import Comment from "@/models/Comments";
 import ProductRequest from "@/models/ProductRequests";
+import Reply from "@/models/Replies";
 import User from "@/models/Users";
 import { revalidatePath } from "next/cache";
 import { ParamValue } from "next/dist/server/request/params";
@@ -24,8 +25,21 @@ export async function deleteComment(
   try {
     await connectDB();
 
-    // 1 Delete comment
-    await comment.deleteOne();
+    // 1 update numOfComments for deleting replies
+    const userReplies = await Reply.find({ commentId });
+
+    for (const reply of userReplies) {
+      const productRequest = await ProductRequest.findById(
+        reply.productRequestId,
+      );
+      if (productRequest) {
+        productRequest.numOfComments = Math.max(
+          0,
+          productRequest.numOfComments - 1,
+        );
+        await productRequest.save();
+      }
+    }
 
     // 2 Decrease numOfComment
     const productRequest = await ProductRequest.findById(productRequestId);
@@ -33,6 +47,12 @@ export async function deleteComment(
       productRequest.numOfComments -= 1;
       await productRequest.save();
     }
+
+    // 3) Delete related replies
+    await Reply.deleteMany({ commentId });
+
+    // 4 Delete comment
+    await comment.deleteOne();
 
     revalidatePath(`/feedbacks/${productRequestId}`);
     return { success: true };
