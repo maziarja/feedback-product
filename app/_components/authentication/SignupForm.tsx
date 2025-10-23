@@ -104,16 +104,16 @@ function SignupForm() {
             type="text"
             name="name"
             placeholder="e.g: John Doe"
-            className={`w-full border-b-1 ${errors.name ? "border-red-500" : "border-gray-300"} py-2 text-base font-normal tracking-wide text-gray-800 transition-colors duration-200 outline-none`}
+            className={`w-full border-b-1 ${errors.name ? "border-red-400" : "border-gray-300"} py-2 text-base font-normal tracking-wide text-gray-800 transition-colors duration-200 outline-none`}
           />
           <AnimatePresence>
             {errors.name && (
               <motion.p
-                initial={{ opacity: 0, x: -400 }}
+                initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -400 }}
+                exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.6 }}
-                className="text-sm font-normal text-red-500"
+                className="text-sm font-normal text-red-400"
               >
                 {errors.name.message}
               </motion.p>
@@ -131,16 +131,16 @@ function SignupForm() {
             type="text"
             name="email"
             placeholder="e.l: johndoe@gmail.com"
-            className={`w-full border-b-1 ${errors.email ? "border-red-500" : "border-gray-300"} py-2 text-base font-normal tracking-wide text-gray-800 transition-colors duration-200 outline-none`}
+            className={`w-full border-b-1 ${errors.email ? "border-red-400" : "border-gray-300"} py-2 text-base font-normal tracking-wide text-gray-800 transition-colors duration-200 outline-none`}
           />
           <AnimatePresence>
             {errors.email && (
               <motion.p
-                initial={{ opacity: 0, x: -400 }}
+                initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -400 }}
+                exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.6 }}
-                className="text-sm font-normal text-red-500"
+                className="text-sm font-normal text-red-400"
               >
                 {errors.email.message}
               </motion.p>
@@ -158,16 +158,16 @@ function SignupForm() {
             name="password"
             type={!showPassword ? "password" : "text"}
             placeholder="Enter your password"
-            className={`w-full border-b-1 ${errors.password ? "border-red-500" : "border-gray-300"} py-2 text-base font-normal tracking-wide text-gray-800 transition-colors duration-200 outline-none`}
+            className={`w-full border-b-1 ${errors.password ? "border-red-400" : "border-gray-300"} py-2 text-base font-normal tracking-wide text-gray-800 transition-colors duration-200 outline-none`}
           />
           <AnimatePresence>
             {errors.password && (
               <motion.p
-                initial={{ opacity: 0, x: -400 }}
+                initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -400 }}
+                exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.6 }}
-                className="text-sm font-normal text-red-500"
+                className="text-sm font-normal text-red-400"
               >
                 {errors.password.message}
               </motion.p>
@@ -184,11 +184,11 @@ function SignupForm() {
         <AnimatePresence>
           {errors.root && (
             <motion.p
-              initial={{ opacity: 0, x: -400 }}
+              initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -400 }}
+              exit={{ opacity: 0, x: -20 }}
               transition={{ duration: 0.6 }}
-              className="text-sm font-normal text-red-500"
+              className="text-sm font-normal text-red-400"
             >
               {errors.root.message}
             </motion.p>
@@ -197,11 +197,11 @@ function SignupForm() {
         <AnimatePresence>
           {errors.image && (
             <motion.p
-              initial={{ opacity: 0, x: -100 }}
+              initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -100 }}
+              exit={{ opacity: 0, x: -20 }}
               transition={{ duration: 0.6 }}
-              className="text-sm font-normal text-red-500"
+              className="text-sm font-normal text-red-400"
             >
               {errors.image.message as string}
             </motion.p>
@@ -229,11 +229,6 @@ function SignupForm() {
           </Link>
         </p>
 
-        {/* <div className="flex items-center gap-4">
-          <div className="h-[1px] flex-1 bg-gray-300"></div>
-          <p className="text-sm text-gray-700">Or login with</p>
-          <div className="h-[1px] flex-1 bg-gray-300"></div>
-        </div> */}
         <GmailButton />
       </form>
     </>
