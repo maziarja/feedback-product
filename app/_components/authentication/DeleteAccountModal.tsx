@@ -5,7 +5,7 @@ import { useOutsideClick } from "@/app/hooks/useOutsideClick";
 import { UserType } from "@/lib/types";
 import { signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { ImSpinner2 } from "react-icons/im";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
@@ -15,6 +15,20 @@ function DeleteAccountModal({ user }: { user: UserType }) {
   const ref = useOutsideClick(() => router.back());
   const [showPassword, setShowPassword] = useState(false);
   const [isPending, setIsPending] = useState(false);
+
+  useEffect(() => {
+    const html = document.documentElement;
+    html.style.overflow = "hidden";
+    html.style.position = "fixed";
+    html.style.width = "100%";
+    window.scrollTo(0, 0);
+
+    return () => {
+      html.style.overflow = "auto";
+      html.style.position = "";
+      html.style.width = "";
+    };
+  }, []);
 
   async function handleSubmitDeleteAccount(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();

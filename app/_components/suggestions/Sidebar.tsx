@@ -20,13 +20,11 @@ function Sidebar({ children, filterBy }: SidebarProps) {
   useEffect(() => {
     const html = document.documentElement;
     if (sidebar) {
-      document.body.style.overflow = "hidden";
       html.style.overflow = "hidden";
       html.style.position = "fixed";
       html.style.width = "100%";
       window.scrollTo(0, 0);
     } else {
-      document.body.style.overflow = "auto";
       html.style.overflow = "auto";
       html.style.position = "";
       html.style.width = "";
