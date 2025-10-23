@@ -32,12 +32,13 @@ export async function registerUser(data: FieldValues) {
     );
 
     // Upload profile picture
-    if (validRegisterUser.data.image[0].size > 1000000) {
-      return { success: false, errorMessage: "Image must be below 1MB" };
-    }
+
     const imageFile = validRegisterUser.data.image as FileList;
     let result;
     if (imageFile[0]?.name !== "undefined" && imageFile.length > 0) {
+      if (validRegisterUser.data.image[0].size > 1000000) {
+        return { success: false, errorMessage: "Image must be below 1MB" };
+      }
       const imageBuffer = Buffer.from(await imageFile[0].arrayBuffer());
       const base64 = imageBuffer.toString("base64");
       const dataUri = `data:${imageFile[0].type};base64,${base64}`;
