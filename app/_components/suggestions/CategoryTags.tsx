@@ -24,7 +24,7 @@ function CategoryTags({ filterBy = "all" }: CategoryTagsProps) {
           <Link
             href={`/feedbacks/suggestions/?filterBy=${category}`}
             key={category}
-            className={` ${filterBy === category ? "bg-blue text-white" : "text-blue bg-light-blue-gray"} cursor-pointer rounded-xl px-4 py-1 text-sm font-semibold`}
+            className={` ${filterBy === category ? "bg-blue text-white" : "text-blue bg-light-blue-gray"} cursor-pointer rounded-xl px-4 py-1 text-sm font-semibold hover:bg-[#CFD7FF]`}
           >
             {category.charAt(0).toUpperCase() + category.slice(1)}
           </Link>

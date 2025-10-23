@@ -7,9 +7,14 @@ import { MdKeyboardArrowUp } from "react-icons/md";
 type UpVoteButtonProps = {
   upVotes: number;
   feedbackId: string;
+  doesCurrentUserUpvote: boolean;
 };
 
-function UpVoteButton({ upVotes, feedbackId }: UpVoteButtonProps) {
+function UpVoteButton({
+  upVotes,
+  feedbackId,
+  doesCurrentUserUpvote,
+}: UpVoteButtonProps) {
   async function handleClick(
     e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>,
   ) {
@@ -17,14 +22,20 @@ function UpVoteButton({ upVotes, feedbackId }: UpVoteButtonProps) {
     e.stopPropagation();
     await upVote(feedbackId);
   }
-
   return (
     <button
       onClick={handleClick}
-      className="bg-light-blue-gray flex cursor-pointer items-center gap-1 self-start rounded-xl px-2 py-1.5 text-sm @[688px]:flex-col @[688px]:gap-2.5"
+      className={`flex cursor-pointer items-center gap-1 self-start rounded-xl px-2 py-1.5 text-sm @[688px]:flex-col @[688px]:gap-2.5 ${doesCurrentUserUpvote ? "bg-blue" : "bg-light-blue-gray hover:bg-[#CFD7FF]"}`}
     >
-      <MdKeyboardArrowUp size={20} className="fill-blue" />
-      <p className="text-dark-blue font-bold">{upVotes}</p>
+      <MdKeyboardArrowUp
+        size={20}
+        className={`${doesCurrentUserUpvote ? "fill-white" : "fill-blue"}`}
+      />
+      <p
+        className={`font-bold ${doesCurrentUserUpvote ? "text-white" : "text-dark-blue"}`}
+      >
+        {upVotes}
+      </p>
     </button>
   );
 }

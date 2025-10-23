@@ -5,14 +5,25 @@ import CommentsList from "@/app/_components/comments/CommentsList";
 import AddCommentForm from "@/app/_components/comments/AddCommentForm";
 import { auth } from "@/lib/auth";
 import GoBackFeedbackDetailsButton from "@/app/_components/feedbacks/GoBackFeedbackDetailsButton";
+import { getUser } from "@/app/_actions/user/getUser";
+import { ProductRequestType } from "@/lib/types";
 
 type Params = Promise<{ feedbackId: string }>;
 
 async function page({ params }: { params: Params }) {
   const session = await auth();
   const { feedbackId } = await params;
-  const feedback = await getFeedbackDetails(feedbackId);
+
+  const [feedback, currentUser] = await Promise.all([
+    getFeedbackDetails(feedbackId),
+    getUser(),
+  ]);
+
   const isCurrentUser = session?.user?.email === feedback?.userId.email;
+
+  const isUpvoted = (upvotedBy: ProductRequestType["upvotedBy"]) => {
+    return currentUser ? upvotedBy.includes(currentUser?._id) : false;
+  };
 
   if (!feedback) return null;
   return (
@@ -21,7 +32,7 @@ async function page({ params }: { params: Params }) {
         <GoBackFeedbackDetailsButton feedbackStatus={feedback.status} />
         {isCurrentUser && <EditFeedbackButton feedbackId={feedback._id} />}
       </div>
-      <FeedbackContainer feedback={feedback} />
+      <FeedbackContainer feedback={feedback} isUpvoted={isUpvoted} />
 
       <CommentsList
         comments={feedback.comments}

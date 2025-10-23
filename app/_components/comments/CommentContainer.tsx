@@ -52,7 +52,7 @@ async function CommentContainer({ comment }: CommentContainerProps) {
             )}
           </div>
         </div>
-        <p className="text-blue-gray text-sm whitespace-pre-wrap">
+        <p className="text-blue-gray text-sm whitespace-pre-wrap md:text-[15px]">
           {comment.content}
         </p>
       </div>

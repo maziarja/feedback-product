@@ -54,7 +54,9 @@ async function ReplyContainer({ reply, commentId }: ReplyContainerProps) {
           <span className="text-purple text-sm font-bold">
             @{reply.replyTo?.email?.split("@")[0] || "Unknown"}
           </span>
-          <p className="whitespace-pre-wrap">{reply.content}</p>
+          <p className="text-sm whitespace-pre-wrap md:text-[15px]">
+            {reply.content}
+          </p>
         </div>
       </div>
     </div>

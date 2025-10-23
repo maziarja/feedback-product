@@ -11,7 +11,6 @@ import CategoryDropdown from "./CategoryDropdown";
 import { AnimatePresence, motion } from "motion/react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ImSpinner2 } from "react-icons/im";
 import Link from "next/link";
 import { createProductRequest } from "@/app/_actions/productRequest/createProductRequest";
 import { useRouter } from "next/navigation";
@@ -51,7 +50,9 @@ function AddFeedbackForm() {
         <IconNewFeedback className="scale-72" />
       </div>
       <div className="space-y-6">
-        <p className="text-dark-blue text-lg font-bold">Create New Feedback</p>
+        <p className="text-dark-blue text-lg font-bold md:text-2xl">
+          Create New Feedback
+        </p>
         <div className="space-y-4">
           <div className="space-y-1.5">
             <p className="text-dark-blue text-sm font-bold">Feedback Title</p>

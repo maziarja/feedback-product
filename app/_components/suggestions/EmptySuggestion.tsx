@@ -14,10 +14,10 @@ function EmptySuggestion() {
         alt="illustration"
       />
       <div className="mb-6 space-y-3.5">
-        <p className="text-dark-blue text-lg font-bold">
+        <p className="text-dark-blue text-lg font-bold md:text-2xl">
           There is no feedback yet.
         </p>
-        <p className="text-blue-gray text-sm">
+        <p className="text-blue-gray text-sm md:text-base">
           Got a suggestion? Found a bug that needs to be squashed? We love
           hearing about new ideas to improve our app.
         </p>

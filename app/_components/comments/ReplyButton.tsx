@@ -24,7 +24,7 @@ function ReplyButton({
   return (
     <button
       onClick={handleClick}
-      className="text-blue flex cursor-pointer items-center gap-2 text-sm font-semibold"
+      className="text-blue flex cursor-pointer items-center gap-2 text-sm font-semibold hover:underline"
     >
       <FaReply className="inline-block" />
       <span>Reply</span>

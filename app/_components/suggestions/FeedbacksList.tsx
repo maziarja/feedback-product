@@ -4,6 +4,7 @@ import { ProductRequestType } from "@/lib/types";
 import { SortBy } from "./SortbyDropDown";
 import Header from "./Header";
 import EmptySuggestion from "./EmptySuggestion";
+import { getUser } from "@/app/_actions/user/getUser";
 
 type FeedbacksListProps = {
   filterBy: ProductRequestType["category"] | "all";
@@ -11,10 +12,14 @@ type FeedbacksListProps = {
 };
 
 async function FeedbacksList({ filterBy, sortBy }: FeedbacksListProps) {
-  const suggestionsFeedbacks = await getSuggestionsProductRequests(
-    filterBy,
-    sortBy,
-  );
+  const [suggestionsFeedbacks, currentUser] = await Promise.all([
+    getSuggestionsProductRequests(filterBy, sortBy),
+    getUser(),
+  ]);
+
+  const isUpvoted = (upvotedBy: ProductRequestType["upvotedBy"]) => {
+    return currentUser ? upvotedBy.includes(currentUser?._id) : false;
+  };
 
   return (
     <>
@@ -22,7 +27,13 @@ async function FeedbacksList({ filterBy, sortBy }: FeedbacksListProps) {
       <div className="@container space-y-4 px-6 py-8 md:px-0">
         {suggestionsFeedbacks && suggestionsFeedbacks?.length > 0 ? (
           suggestionsFeedbacks?.map((feedback) => {
-            return <FeedbackContainer key={feedback._id} feedback={feedback} />;
+            return (
+              <FeedbackContainer
+                key={feedback._id}
+                feedback={feedback}
+                isUpvoted={isUpvoted}
+              />
+            );
           })
         ) : (
           <EmptySuggestion />
