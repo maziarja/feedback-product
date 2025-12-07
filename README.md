@@ -55,12 +55,6 @@ While building this project, I learned how intercepting routes work in Next.js a
 
 I also discovered the strength of using **Zod** with **React Hook Form** for validating and managing forms. Together, they made handling form inputs much more reliable, readable, and efficient.
 
-## Author
-
-- Frontend Mentor - [@maziarja](https://www.frontendmentor.io/profile/maziarja)
-- Twitter - [@maz_alem](https://x.com/maz_alem)
-- LinkedIn - [@maziar-jamalialem](https://www.linkedin.com/in/maziar-jamalialem-677030345/)
-
 ## Acknowledgments
 
 I want to express my appreciation to **Tom Phillips** for his _NextAuth v5_ course on Udemy. I had learned authentication before, but it was always a bit confusing to me. After taking his course, the concepts became much clearer and more structured.

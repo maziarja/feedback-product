@@ -24,7 +24,6 @@ export async function getSuggestionsProductRequests(
     ...(sortBy === "Least-Comments" && { numOfComments: 1 }),
     ...(sortBy === "Most-Comments" && { numOfComments: -1 }),
   };
-
   const query = ProductRequest.find({
     status: "suggestion",
   })
